@@ -17,7 +17,7 @@ public class Member {
     private String username;
     private int age;
 
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = LAZY) // ~ToOne 지연로딩을 사용
     @JoinColumn(name = "team_id")
     private Team team;
 

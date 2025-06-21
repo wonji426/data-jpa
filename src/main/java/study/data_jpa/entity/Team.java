@@ -17,7 +17,7 @@ public class Team {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(mappedBy = "team")//FK가 없는 곳에 mappedBY
     private List<Member> members =  new ArrayList<Member>();
 
     public Team(String name) {

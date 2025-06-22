@@ -8,5 +8,7 @@ import java.util.List;
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
     //쿼리 메소드로 구현
-    List<Member> findByUsername(String username);
+    List<Member> findByUsernameAndAgeGreaterThan(String username, int age);
+
+    List<Member> findTop3HelloBy();
 }

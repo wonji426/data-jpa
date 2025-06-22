@@ -8,6 +8,7 @@ import study.data_jpa.entity.Member;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
@@ -16,8 +17,9 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     List<Member> findTop3HelloBy();
 
-    @Query(name = "Member.findByUsername") //없어도 먼저 해당 이름의 네임드 쿼리를 찾는다.
-    List<Member> findByUsername(@Param("username")  String username);
+    @Query(name = "Member.findByUsername")
+        //없어도 먼저 해당 이름의 네임드 쿼리를 찾는다.
+    List<Member> findByUsername(@Param("username") String username);
 
     @Query("select m from Member m where m.username = :username and m.age = :age")
     List<Member> findUser(@Param("username") String username, @Param("age") int age);
@@ -30,4 +32,10 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     @Query("select m from Member m where m.username in :names")
     List<Member> findByNames(@Param("names") Collection<String> names);
+
+    List<Member> findListByUsername(String username); //컬렉션
+
+    Member findMemberByUsername(String username); //단건
+
+    Optional<Member> findOptionalByUsername(String username); // 단건 Optional
 }
